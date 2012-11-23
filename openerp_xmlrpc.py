@@ -35,7 +35,7 @@ import xmlrpclib
 
 
 class OpenerpXmlRpc():
-    def __init__(self, protocol='http', host='localhost', port='8069',
+    def __init__(self, protocol='https', host='localhost', port='8069',
                  context={}, **kwargs):
         """
         init method for class

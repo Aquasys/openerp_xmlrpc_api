@@ -1,0 +1,2 @@
+OpenERP xmlrpc api library
+=========================

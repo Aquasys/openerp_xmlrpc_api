@@ -1,0 +1,1 @@
+from openerp_xmlrpc import OpenerpXmlRpc

@@ -2,8 +2,6 @@
 
 from setuptools import setup, find_packages
 
-MODULE_NAME = 'openerp_xmlrpc'
-
 with open('README.rst') as file:
         long_description = file.read()
 

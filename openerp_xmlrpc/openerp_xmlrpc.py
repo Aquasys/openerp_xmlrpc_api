@@ -275,8 +275,6 @@ class OpenerpXmlRpc():
         result = res_val.get('result', False)
         if result:
             result = base64.decodestring(result)
-            print "44444444448888888888888888"
-        print "4444444444444444$$",result
 
         return result
 

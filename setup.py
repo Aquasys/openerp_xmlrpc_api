@@ -7,7 +7,7 @@ with open('README.rst') as file:
 
 setup(
     name='openerp_xmlrpc',
-    version="0.1",
+    version="0.2",
     author='Grishma Shukla',
     author_email='grs3012@gmail.com',
     description='Xmlrpc Api library for OpenERP',

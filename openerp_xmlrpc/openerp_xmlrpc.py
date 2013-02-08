@@ -32,6 +32,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #########################################################################
 import xmlrpclib
+import base64
 
 
 class OpenerpXmlRpc():
@@ -54,9 +55,12 @@ class OpenerpXmlRpc():
         #database connection to utilize databse functionality
         self.db_connection = xmlrpclib.ServerProxy(
             "%s://%s:%s/xmlrpc/db" % (protocol, host, port))
-        #common connection to call commont methos like login
+        #common connection to call common methods like login
         self.common_connection = xmlrpclib.ServerProxy(
             "%s://%s:%s/xmlrpc/common" % (protocol, host, port))
+        #report connection to call report methods like report, report_get
+        self.report_connection = xmlrpclib.ServerProxy(
+            "%s://%s:%s/xmlrpc/report" % (protocol, host, port))
         #seting up class variables
         self.uid = False
         self.port = port
@@ -251,6 +255,30 @@ class OpenerpXmlRpc():
         except Exception as excep:
             raise excep
 
+    def report(self, report_name, ids, report_type='pdf', context={}):
+        result = False
+
+        if not isinstance(ids, (list, tuple)):
+            ids = [ids]
+
+        report_id = self.report_connection.report(
+            self.database, self.uid, self.password, report_name,
+            ids, {'report_type': report_type}
+        )
+        status = False
+        res_val = {}
+        while not status:
+            res_val = self.report_connection.report_get(
+                self.database, self.uid, self.password, report_id)
+            status = res_val['state']
+
+        result = res_val.get('result', False)
+        if result:
+            result = base64.decodestring(result)
+            print "44444444448888888888888888"
+        print "4444444444444444$$",result
+
+        return result
 
 if __name__ == '__main__':
     #context variable

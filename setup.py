@@ -8,15 +8,15 @@ with open('README.rst') as file:
 setup(
     name='openerp_xmlrpc',
     version="0.2",
-    author='Grishma Shukla',
-    author_email='grs3012@gmail.com',
+    author='Aquasys G.K.',
+    author_email='operations@aquasys.co.jp',
     description='Xmlrpc Api library for OpenERP',
     long_description=long_description,
     url='https://github.com/Aquasys/openerp_xmlrpc_api',
     include_package_data=True,
     packages=find_packages(),
     classifiers=[
-        "Development Status :: 1 - Alpha",
+        "Development Status :: 4 - Beta",
         "License :: OSI Approved :: BSD License",
         "Framework :: OpenERP",
         "Environment :: OpenERP",

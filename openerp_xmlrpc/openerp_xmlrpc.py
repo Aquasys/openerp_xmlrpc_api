@@ -256,6 +256,13 @@ class OpenerpXmlRpc():
             raise excep
 
     def report(self, report_name, ids, report_type='pdf', context={}):
+        """
+        get any method from OpenERP side with existing OpenERP objects
+
+        :param report_name: OpenERP report name e.g res.partner for partner
+        :param ids: object id or list of object ids for report
+        :param report_type: report type e.g pdf
+        """
         result = False
 
         if not isinstance(ids, (list, tuple)):
@@ -307,6 +314,9 @@ if __name__ == '__main__':
     #write example for partner
     res = oerp.write('res.partner', cr_id, {'name': 'Shukla'}, context=context)
     print res
+
+    #report example
+    pdf_data = oerp.report("res.partner", [cr_id])
 
     #calling valid mathod from execute direct
     print oerp.execute('res.partner', 'name_get', cr_id, context)
